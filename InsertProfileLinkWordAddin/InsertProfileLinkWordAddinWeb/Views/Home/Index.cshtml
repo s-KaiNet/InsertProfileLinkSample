@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html ng-app="profile.link.app">
+<head>
+	<title>Profile Search</title>
+	<meta charset="utf-8" />
+
+	<link rel="stylesheet" href="~/bower_components/office-ui-fabric/dist/css/fabric.min.css" />
+	<link rel="stylesheet" href="~/bower_components/office-ui-fabric/dist/css/fabric.components.css"/>
+	<link rel='stylesheet' href="~/bower_components/angular-loading-bar/build/loading-bar.min.css" />
+	<link rel="stylesheet" href="~/Content/styles.css" />
+
+	<script type="text/javascript" src="~/bower_components/jquery/dist/jquery.min.js"></script>
+	<script type="text/javascript" src="~/bower_components/angular/angular.min.js"></script>
+	<script type="text/javascript" src="~/bower_components/angular-route/angular-route.min.js"></script>
+	<script type="text/javascript" src="~/bower_components/adal-angular/dist/adal.min.js"></script>
+	<script type="text/javascript" src="~/bower_components/adal-angular/dist/adal-angular.min.js"></script>
+	<script type="text/javascript" src="~/bower_components/ng-office-ui-fabric/ngOfficeUiFabric.min.js"></script>
+	<script type='text/javascript' src="~/bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+
+	<!-- app -->
+	<script type="text/javascript" src="~/app/app.js"></script>
+	<script type="text/javascript" src="~/app/mainCtrl.js"></script>
+	<script type="text/javascript" src="~/app/o365.service.js"></script>
+
+</head>
+<body>
+	<div>
+		<ng-view />
+	</div>
+<script type="text/ng-template" id="main.html">
+		<div>
+			<div class="avatar" ng-show="!!profileImageUrl"><img ng-src="{{profileImageUrl}}" alt="" /></div>
+			<div class="welcome" ng-show="!!username">Welcome, {{username}}</div>
+		</div>
+	<div>
+		<uif-searchbox value="searchText" /> <uif-button ng-click="search()" uif-type="primary">Search</uif-button>
+	</div>
+	<div id="log" ng-bind="log">
+	</div>
+	</script>
+</body>
+</html>

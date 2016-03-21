@@ -1,0 +1,1286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AA937613-84E8-473B-A94A-7852E1FE2866}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InsertProfileLinkWordAddinWeb</RootNamespace>
+    <AssemblyName>InsertProfileLinkWordAddinWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort>44300</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetOfficeVersion>15.0</TargetOfficeVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=1.2.3.490, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.IdentityModel.6.1.7600.16394\lib\net35\Microsoft.IdentityModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory, Version=2.23.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.23.302261847\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms, Version=2.23.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.23.302261847\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Office365.Discovery">
+      <HintPath>..\packages\Microsoft.Office365.Discovery.1.0.22\lib\portable-net40+sl5+wp8+win8+MonoAndroid10+MonoTouch10+WindowsPhoneApp81\Microsoft.Office365.Discovery.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.ActiveDirectory">
+      <HintPath>..\packages\Microsoft.Owin.Security.ActiveDirectory.3.0.1\lib\net45\Microsoft.Owin.Security.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Jwt">
+      <HintPath>..\packages\Microsoft.Owin.Security.Jwt.3.0.1\lib\net45\Microsoft.Owin.Security.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.4.0.2.206221351\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\app.js" />
+    <Content Include="app\mainCtrl.js" />
+    <Content Include="app\o365.service.js" />
+    <Content Include="bower_components\adal-angular\changelog.txt" />
+    <Content Include="bower_components\adal-angular\dist\adal-angular.min.js" />
+    <Content Include="bower_components\adal-angular\dist\adal.min.js" />
+    <Content Include="bower_components\adal-angular\Gruntfile.js" />
+    <Content Include="bower_components\adal-angular\karma.conf.js" />
+    <Content Include="bower_components\adal-angular\lib\adal-angular.js" />
+    <Content Include="bower_components\adal-angular\lib\adal.js" />
+    <Content Include="bower_components\adal-angular\LICENSE.txt" />
+    <Content Include="bower_components\angular-loading-bar\build\loading-bar.css" />
+    <Content Include="bower_components\angular-loading-bar\build\loading-bar.js" />
+    <Content Include="bower_components\angular-loading-bar\build\loading-bar.min.css" />
+    <Content Include="bower_components\angular-loading-bar\build\loading-bar.min.js" />
+    <Content Include="bower_components\angular-loading-bar\Gruntfile.js" />
+    <Content Include="bower_components\angular-loading-bar\index.js" />
+    <Content Include="bower_components\angular-loading-bar\src\loading-bar.css" />
+    <Content Include="bower_components\angular-loading-bar\src\loading-bar.js" />
+    <Content Include="bower_components\angular-route\angular-route.js" />
+    <Content Include="bower_components\angular-route\angular-route.min.js" />
+    <Content Include="bower_components\angular-route\index.js" />
+    <Content Include="bower_components\angular\angular-csp.css" />
+    <Content Include="bower_components\angular\angular.js" />
+    <Content Include="bower_components\angular\angular.min.js" />
+    <Content Include="bower_components\angular\index.js" />
+    <Content Include="bower_components\jquery\AUTHORS.txt" />
+    <Content Include="bower_components\jquery\dist\jquery.js" />
+    <Content Include="bower_components\jquery\dist\jquery.min.js" />
+    <Content Include="bower_components\jquery\dist\jquery.slim.js" />
+    <Content Include="bower_components\jquery\dist\jquery.slim.min.js" />
+    <Content Include="bower_components\jquery\LICENSE.txt" />
+    <Content Include="bower_components\jquery\src\ajax.js" />
+    <Content Include="bower_components\jquery\src\ajax\jsonp.js" />
+    <Content Include="bower_components\jquery\src\ajax\load.js" />
+    <Content Include="bower_components\jquery\src\ajax\parseJSON.js" />
+    <Content Include="bower_components\jquery\src\ajax\parseXML.js" />
+    <Content Include="bower_components\jquery\src\ajax\script.js" />
+    <Content Include="bower_components\jquery\src\ajax\var\location.js" />
+    <Content Include="bower_components\jquery\src\ajax\var\nonce.js" />
+    <Content Include="bower_components\jquery\src\ajax\var\rquery.js" />
+    <Content Include="bower_components\jquery\src\ajax\xhr.js" />
+    <Content Include="bower_components\jquery\src\attributes.js" />
+    <Content Include="bower_components\jquery\src\attributes\attr.js" />
+    <Content Include="bower_components\jquery\src\attributes\classes.js" />
+    <Content Include="bower_components\jquery\src\attributes\prop.js" />
+    <Content Include="bower_components\jquery\src\attributes\support.js" />
+    <Content Include="bower_components\jquery\src\attributes\val.js" />
+    <Content Include="bower_components\jquery\src\callbacks.js" />
+    <Content Include="bower_components\jquery\src\core.js" />
+    <Content Include="bower_components\jquery\src\core\access.js" />
+    <Content Include="bower_components\jquery\src\core\DOMEval.js" />
+    <Content Include="bower_components\jquery\src\core\init.js" />
+    <Content Include="bower_components\jquery\src\core\parseHTML.js" />
+    <Content Include="bower_components\jquery\src\core\ready.js" />
+    <Content Include="bower_components\jquery\src\core\support.js" />
+    <Content Include="bower_components\jquery\src\core\var\rsingleTag.js" />
+    <Content Include="bower_components\jquery\src\css.js" />
+    <Content Include="bower_components\jquery\src\css\addGetHookIf.js" />
+    <Content Include="bower_components\jquery\src\css\adjustCSS.js" />
+    <Content Include="bower_components\jquery\src\css\curCSS.js" />
+    <Content Include="bower_components\jquery\src\css\defaultDisplay.js" />
+    <Content Include="bower_components\jquery\src\css\hiddenVisibleSelectors.js" />
+    <Content Include="bower_components\jquery\src\css\showHide.js" />
+    <Content Include="bower_components\jquery\src\css\support.js" />
+    <Content Include="bower_components\jquery\src\css\var\cssExpand.js" />
+    <Content Include="bower_components\jquery\src\css\var\getStyles.js" />
+    <Content Include="bower_components\jquery\src\css\var\isHidden.js" />
+    <Content Include="bower_components\jquery\src\css\var\rmargin.js" />
+    <Content Include="bower_components\jquery\src\css\var\rnumnonpx.js" />
+    <Content Include="bower_components\jquery\src\css\var\swap.js" />
+    <Content Include="bower_components\jquery\src\data.js" />
+    <Content Include="bower_components\jquery\src\data\accepts.js" />
+    <Content Include="bower_components\jquery\src\data\Data.js" />
+    <Content Include="bower_components\jquery\src\data\support.js" />
+    <Content Include="bower_components\jquery\src\data\var\acceptData.js" />
+    <Content Include="bower_components\jquery\src\data\var\dataPriv.js" />
+    <Content Include="bower_components\jquery\src\data\var\dataUser.js" />
+    <Content Include="bower_components\jquery\src\deferred.js" />
+    <Content Include="bower_components\jquery\src\deferred\exceptionHook.js" />
+    <Content Include="bower_components\jquery\src\deprecated.js" />
+    <Content Include="bower_components\jquery\src\dimensions.js" />
+    <Content Include="bower_components\jquery\src\effects.js" />
+    <Content Include="bower_components\jquery\src\effects\animatedSelector.js" />
+    <Content Include="bower_components\jquery\src\effects\support.js" />
+    <Content Include="bower_components\jquery\src\effects\Tween.js" />
+    <Content Include="bower_components\jquery\src\event.js" />
+    <Content Include="bower_components\jquery\src\event\ajax.js" />
+    <Content Include="bower_components\jquery\src\event\alias.js" />
+    <Content Include="bower_components\jquery\src\event\focusin.js" />
+    <Content Include="bower_components\jquery\src\event\support.js" />
+    <Content Include="bower_components\jquery\src\event\trigger.js" />
+    <Content Include="bower_components\jquery\src\exports\amd.js" />
+    <Content Include="bower_components\jquery\src\exports\global.js" />
+    <Content Include="bower_components\jquery\src\intro.js" />
+    <Content Include="bower_components\jquery\src\jquery.js" />
+    <Content Include="bower_components\jquery\src\manipulation.js" />
+    <Content Include="bower_components\jquery\src\manipulation\buildFragment.js" />
+    <Content Include="bower_components\jquery\src\manipulation\createSafeFragment.js" />
+    <Content Include="bower_components\jquery\src\manipulation\getAll.js" />
+    <Content Include="bower_components\jquery\src\manipulation\setGlobalEval.js" />
+    <Content Include="bower_components\jquery\src\manipulation\support.js" />
+    <Content Include="bower_components\jquery\src\manipulation\var\nodeNames.js" />
+    <Content Include="bower_components\jquery\src\manipulation\var\rcheckableType.js" />
+    <Content Include="bower_components\jquery\src\manipulation\var\rleadingWhitespace.js" />
+    <Content Include="bower_components\jquery\src\manipulation\var\rscriptType.js" />
+    <Content Include="bower_components\jquery\src\manipulation\var\rtagName.js" />
+    <Content Include="bower_components\jquery\src\manipulation\wrapMap.js" />
+    <Content Include="bower_components\jquery\src\manipulation\_evalUrl.js" />
+    <Content Include="bower_components\jquery\src\offset.js" />
+    <Content Include="bower_components\jquery\src\outro.js" />
+    <Content Include="bower_components\jquery\src\queue.js" />
+    <Content Include="bower_components\jquery\src\queue\delay.js" />
+    <Content Include="bower_components\jquery\src\selector-native.js" />
+    <Content Include="bower_components\jquery\src\selector-sizzle.js" />
+    <Content Include="bower_components\jquery\src\selector.js" />
+    <Content Include="bower_components\jquery\src\serialize.js" />
+    <Content Include="bower_components\jquery\src\support.js" />
+    <Content Include="bower_components\jquery\src\traversing.js" />
+    <Content Include="bower_components\jquery\src\traversing\findFilter.js" />
+    <Content Include="bower_components\jquery\src\traversing\var\dir.js" />
+    <Content Include="bower_components\jquery\src\traversing\var\rneedsContext.js" />
+    <Content Include="bower_components\jquery\src\traversing\var\siblings.js" />
+    <Content Include="bower_components\jquery\src\var\arr.js" />
+    <Content Include="bower_components\jquery\src\var\class2type.js" />
+    <Content Include="bower_components\jquery\src\var\concat.js" />
+    <Content Include="bower_components\jquery\src\var\deletedIds.js" />
+    <Content Include="bower_components\jquery\src\var\document.js" />
+    <Content Include="bower_components\jquery\src\var\documentElement.js" />
+    <Content Include="bower_components\jquery\src\var\hasOwn.js" />
+    <Content Include="bower_components\jquery\src\var\indexOf.js" />
+    <Content Include="bower_components\jquery\src\var\pnum.js" />
+    <Content Include="bower_components\jquery\src\var\push.js" />
+    <Content Include="bower_components\jquery\src\var\rcssNum.js" />
+    <Content Include="bower_components\jquery\src\var\rnotwhite.js" />
+    <Content Include="bower_components\jquery\src\var\slice.js" />
+    <Content Include="bower_components\jquery\src\var\support.js" />
+    <Content Include="bower_components\jquery\src\var\toString.js" />
+    <Content Include="bower_components\jquery\src\wrap.js" />
+    <Content Include="bower_components\ng-office-ui-fabric\.gitignore" />
+    <Content Include="bower_components\ng-office-ui-fabric\ngOfficeUiFabric.js" />
+    <Content Include="bower_components\ng-office-ui-fabric\ngOfficeUiFabric.min.js" />
+    <Content Include="bower_components\office-ui-fabric\.gitignore" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Breadcrumb\Breadcrumb.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Breadcrumb\Breadcrumb.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Breadcrumb\Breadcrumb.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Button\Button.Command.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Button\Button.Compound.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Button\Button.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Button\Button.Hero.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Button\Button.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Button\Button.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Button\Button.Primary.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Callout\Callout.ActionText.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Callout\Callout.Close.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Callout\Callout.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Callout\Callout.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Callout\Callout.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Callout\Callout.Oobe.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Callout\Callout.Peek.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ChoiceField\ChoiceField.Checkbox.Disabled.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ChoiceField\ChoiceField.Checkbox.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ChoiceField\ChoiceField.Checkbox.Selected.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ChoiceField\ChoiceField.ChoiceFieldGroup.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ChoiceField\ChoiceField.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ChoiceField\ChoiceField.Disabled.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ChoiceField\ChoiceField.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ChoiceField\ChoiceField.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ChoiceField\ChoiceField.Selected.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\CommandBar\CommandBar.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\CommandBar\CommandBar.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\CommandBar\CommandBar.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ContextualMenu\ContextualMenu.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ContextualMenu\ContextualMenu.Dividers.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ContextualMenu\ContextualMenu.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ContextualMenu\ContextualMenu.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ContextualMenu\ContextualMenu.Multiselect.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ContextualMenu\ContextualMenu.SubMenu.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\DatePicker\DatePicker.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\DatePicker\DatePicker.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\DatePicker\DatePicker.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dialog\Dialog.Blocking.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dialog\Dialog.Close.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dialog\Dialog.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dialog\Dialog.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dialog\Dialog.LgHeader.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dialog\Dialog.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dialog\Dialog.Multiline.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dropdown\Dropdown.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dropdown\Dropdown.Disabled.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dropdown\Dropdown.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dropdown\Dropdown.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Facepile\Facepile.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Facepile\Facepile.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Facepile\Facepile.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Label\Label.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Label\Label.Disabled.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Label\Label.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Label\Label.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Label\Label.Required.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Link\Link.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Link\Link.Hero.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Link\Link.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Link\Link.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ListItem\ListItem.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ListItem\ListItem.Document.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ListItem\ListItem.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ListItem\ListItem.Image.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ListItem\ListItem.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ListItem\ListItem.Selectable.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ListItem\ListItem.Selected.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ListItem\ListItem.Unread.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ListItem\ListItem.Unseen.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\List\List.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\List\List.Grid.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\List\List.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\List\List.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\MessageBanner\MessageBanner.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\MessageBanner\MessageBanner.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\MessageBanner\MessageBanner.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\NavBar\NavBar.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\NavBar\NavBar.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\NavBar\NavBar.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\OrgChart\OrgChart.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\OrgChart\OrgChart.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\OrgChart\OrgChart.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\OrgChart\OrgChart.Square.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Overlay\Overlay.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Overlay\Overlay.Dark.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Overlay\Overlay.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Overlay\Overlay.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Overlay\Overlay.None.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Panel\Panel.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Panel\Panel.ExtraLarge.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Panel\Panel.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Panel\Panel.Large.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Panel\Panel.Medium.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Panel\Panel.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PeoplePicker\PeoplePicker.Compact.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PeoplePicker\PeoplePicker.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PeoplePicker\PeoplePicker.Disconnected.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PeoplePicker\PeoplePicker.FacePile.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PeoplePicker\PeoplePicker.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PeoplePicker\PeoplePicker.MembersList.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PeoplePicker\PeoplePicker.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PeoplePicker\PeoplePicker.Searching.png" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PersonaCard\PersonaCard.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PersonaCard\PersonaCard.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PersonaCard\PersonaCard.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PersonaCard\PersonaCard.Square.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.ExtraLarge.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.ExtraSmall.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Initials.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Large.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Person.jpg" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Person2.png" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Presence.Available.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Presence.Away.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Presence.Blocked.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Presence.Busy.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Presence.Dnd.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Presence.Offline.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Presence.Square.Available.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Presence.Square.Away.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Presence.Square.Blocked.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Presence.Square.Busy.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Presence.Square.Dnd.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Presence.Square.Offline.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Small.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Square.ExtraLarge.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Square.ExtraSmall.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Square.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Square.Large.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Square.Small.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Square.Tiny.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.Tiny.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Pivot\Pivot.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Pivot\Pivot.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Pivot\Pivot.Large.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Pivot\Pivot.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Pivot\Pivot.Tabs.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Pivot\Pivot.Tabs.Large.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ProgressIndicator\ProgressIndicator.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ProgressIndicator\ProgressIndicator.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ProgressIndicator\ProgressIndicator.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\SearchBox\SearchBox.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\SearchBox\SearchBox.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\SearchBox\SearchBox.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Spinner\Spinner.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Spinner\Spinner.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Spinner\Spinner.Large.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Spinner\Spinner.Message.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Spinner\Spinner.Message.Large.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Spinner\Spinner.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Table\Table.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Table\Table.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Table\Table.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\TextField\TextField.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\TextField\TextField.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\TextField\TextField.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\TextField\TextField.Multiline.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\TextField\TextField.Placeholder.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\TextField\TextField.Underlined.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Toggle\Toggle.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Toggle\Toggle.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Toggle\Toggle.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Toggle\Toggle.TextLeft.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\css\fabric.components.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\css\fabric.components.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\css\fabric.components.rtl.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\css\fabric.components.rtl.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\css\fabric.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\css\fabric.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\css\fabric.rtl.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\css\fabric.rtl.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\js\jquery.fabric.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\js\jquery.fabric.min.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Breadcrumb\Breadcrumb.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Breadcrumb\Breadcrumb.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Breadcrumb\Breadcrumb.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Breadcrumb\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Button\Button.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Button\Button.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Button\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Callout\Callout.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Callout\Callout.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Callout\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ChoiceField\ChoiceField.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ChoiceField\ChoiceField.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ChoiceField\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\CommandBar\CommandBar.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\CommandBar\CommandBar.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\CommandBar\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\CommandBar\Jquery.CommandBar.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ContextualMenu\ContextualMenu.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ContextualMenu\ContextualMenu.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ContextualMenu\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ContextualMenu\Jquery.ContextualMenu.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\DatePicker\DatePicker.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\DatePicker\DatePicker.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\DatePicker\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\DatePicker\Jquery.DatePicker.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\DatePicker\PickaDate.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Dialog\Dialog.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Dialog\Dialog.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Dialog\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Dialog\jquery.Dialog.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Dropdown\Dropdown.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Dropdown\Dropdown.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Dropdown\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Dropdown\Jquery.Dropdown.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Facepile\Facepile.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Facepile\Facepile.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Facepile\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Facepile\Jquery.Facepile.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Label\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Label\Label.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Label\Label.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Link\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Link\Link.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Link\Link.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ListItem\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ListItem\Jquery.ListItem.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ListItem\ListItem.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ListItem\ListItem.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\List\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\List\List.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\List\List.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\MessageBanner\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\MessageBanner\MessageBanner.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\MessageBanner\MessageBanner.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\MessageBanner\MessageBanner.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\NavBar\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\NavBar\Jquery.NavBar.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\NavBar\NavBar.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\NavBar\NavBar.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\OrgChart\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\OrgChart\OrgChart.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\OrgChart\OrgChart.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Overlay\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Overlay\Overlay.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Overlay\Overlay.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Panel\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Panel\Jquery.Panel.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Panel\Panel.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Panel\Panel.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\PeoplePicker\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\PeoplePicker\Jquery.PeoplePicker.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\PeoplePicker\PeoplePicker.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\PeoplePicker\PeoplePicker.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\PeoplePicker\PeoplePicker.Searching.png" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\PersonaCard\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\PersonaCard\Jquery.PersonaCard.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\PersonaCard\PersonaCard.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\PersonaCard\PersonaCard.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Persona\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Persona\Persona.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Persona\Persona.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Persona\Persona.Person.jpg" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Persona\Persona.Person2.png" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Pivot\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Pivot\jquery.Pivot.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Pivot\Pivot.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Pivot\Pivot.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ProgressIndicator\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ProgressIndicator\ProgressIndicator.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ProgressIndicator\ProgressIndicator.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\ProgressIndicator\ProgressIndicator.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\SearchBox\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\SearchBox\Jquery.SearchBox.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\SearchBox\SearchBox.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\SearchBox\SearchBox.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Spinner\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Spinner\Spinner.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Spinner\Spinner.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Spinner\Spinner.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Table\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Table\Table.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Table\Table.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\TextField\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\TextField\Jquery.TextField.js" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\TextField\TextField.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\TextField\TextField.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Toggle\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Toggle\Toggle.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Components\Toggle\Toggle.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Form\css\Form.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Form\css\Form.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Form\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Icons\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\channel.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\channels.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\css\VideoPortal.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\css\VideoPortal.min.css" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\index.html" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\player.html" />
+    <Content Include="bower_components\office-ui-fabric\gulpfile.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Breadcrumb\Breadcrumb.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Breadcrumb\Breadcrumb.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Button\Button.Command.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Button\Button.Compound.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Button\Button.Hero.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Button\Button.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Button\Button.Primary.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Callout\Callout.ActionText.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Callout\Callout.Close.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Callout\Callout.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Callout\Callout.Oobe.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Callout\Callout.Peek.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ChoiceField\ChoiceField.Checkbox.Disabled.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ChoiceField\ChoiceField.Checkbox.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ChoiceField\ChoiceField.Checkbox.Selected.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ChoiceField\ChoiceField.ChoiceFieldGroup.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ChoiceField\ChoiceField.Disabled.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ChoiceField\ChoiceField.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ChoiceField\ChoiceField.Selected.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\CommandBar\CommandBar.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\CommandBar\Jquery.CommandBar.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ContextualMenu\ContextualMenu.Dividers.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ContextualMenu\ContextualMenu.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ContextualMenu\ContextualMenu.Multiselect.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ContextualMenu\ContextualMenu.SubMenu.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ContextualMenu\Jquery.ContextualMenu.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\DatePicker\DatePicker.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\DatePicker\Jquery.DatePicker.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\DatePicker\PickaDate.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Dialog\Dialog.Blocking.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Dialog\Dialog.Close.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Dialog\Dialog.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Dialog\Dialog.LgHeader.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Dialog\Dialog.Multiline.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Dialog\jquery.Dialog.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Dropdown\Dropdown.Disabled.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Dropdown\Dropdown.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Dropdown\Jquery.Dropdown.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Facepile\Facepile.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Facepile\Jquery.Facepile.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Label\Label.Disabled.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Label\Label.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Label\Label.Required.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Link\Link.Hero.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Link\Link.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ListItem\Jquery.ListItem.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ListItem\ListItem.Document.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ListItem\ListItem.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ListItem\ListItem.Image.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ListItem\ListItem.Selectable.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ListItem\ListItem.Selected.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ListItem\ListItem.Unread.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ListItem\ListItem.Unseen.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\List\List.Grid.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\List\List.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\MessageBanner\MessageBanner.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\MessageBanner\MessageBanner.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\NavBar\Jquery.NavBar.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\NavBar\NavBar.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\OrgChart\OrgChart.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\OrgChart\OrgChart.Square.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Overlay\Overlay.Dark.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Overlay\Overlay.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Overlay\Overlay.None.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Panel\Jquery.Panel.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Panel\Panel.ExtraLarge.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Panel\Panel.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Panel\Panel.Large.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Panel\Panel.Medium.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\PeoplePicker\Jquery.PeoplePicker.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\PeoplePicker\PeoplePicker.Compact.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\PeoplePicker\PeoplePicker.Disconnected.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\PeoplePicker\PeoplePicker.FacePile.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\PeoplePicker\PeoplePicker.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\PeoplePicker\PeoplePicker.MembersList.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\PeoplePicker\PeoplePicker.Searching.png" />
+    <Content Include="bower_components\office-ui-fabric\src\components\PersonaCard\Jquery.PersonaCard.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\PersonaCard\PersonaCard.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\PersonaCard\PersonaCard.Square.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.ExtraLarge.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.ExtraSmall.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Initials.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Large.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Person.jpg" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Person2.png" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Presence.Available.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Presence.Away.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Presence.Blocked.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Presence.Busy.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Presence.Dnd.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Presence.Offline.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Presence.Square.Available.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Presence.Square.Away.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Presence.Square.Blocked.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Presence.Square.Busy.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Presence.Square.Dnd.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Presence.Square.Offline.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Small.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Square.ExtraLarge.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Square.ExtraSmall.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Square.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Square.Large.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Square.Small.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Square.Tiny.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.Tiny.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Pivot\jquery.Pivot.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Pivot\Pivot.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Pivot\Pivot.Large.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Pivot\Pivot.Tabs.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Pivot\Pivot.Tabs.Large.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ProgressIndicator\ProgressIndicator.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ProgressIndicator\ProgressIndicator.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\SearchBox\Jquery.SearchBox.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\SearchBox\SearchBox.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Spinner\Spinner.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Spinner\Spinner.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Spinner\Spinner.Large.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Spinner\Spinner.Message.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Spinner\Spinner.Message.Large.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Table\Table.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\TextField\Jquery.TextField.js" />
+    <Content Include="bower_components\office-ui-fabric\src\components\TextField\TextField.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\TextField\TextField.Multiline.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\TextField\TextField.Placeholder.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\TextField\TextField.Underlined.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Toggle\Toggle.html" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Toggle\Toggle.TextLeft.html" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\Form\index.html" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\Icons\index.html" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\VideoPortal\channel.html" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\VideoPortal\channels.html" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\VideoPortal\index.html" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\VideoPortal\player.html" />
+    <Content Include="bower_components\office-ui-fabric\src\templates\componentSampleTemplate.html" />
+    <Content Include="bower_components\office-ui-fabric\src\templates\individual-component-example.html" />
+    <Content Include="bower_components\office-ui-fabric\src\templates\samples-index.html" />
+    <Content Include="bower_components\office-ui-fabric\Third Party Notices.txt" />
+    <Content Include="Content\OfficeThemes.css" />
+    <Content Include="Content\styles.css" />
+    <Content Include="packages.config" />
+    <Content Include="bower.json" />
+    <Content Include="bower_components\adal-angular\.bower.json" />
+    <Content Include="bower_components\adal-angular\bower.json" />
+    <Content Include="bower_components\adal-angular\contributing.md" />
+    <Content Include="bower_components\adal-angular\package.json" />
+    <Content Include="bower_components\adal-angular\README.md" />
+    <Content Include="bower_components\angular-route\.bower.json" />
+    <Content Include="bower_components\angular-route\angular-route.min.js.map" />
+    <Content Include="bower_components\angular-route\bower.json" />
+    <Content Include="bower_components\angular-route\package.json" />
+    <Content Include="bower_components\angular-route\README.md" />
+    <Content Include="bower_components\angular\.bower.json" />
+    <Content Include="bower_components\angular\angular.min.js.gzip" />
+    <Content Include="bower_components\angular\angular.min.js.map" />
+    <Content Include="bower_components\angular\bower.json" />
+    <Content Include="bower_components\angular\package.json" />
+    <Content Include="bower_components\angular\README.md" />
+    <Content Include="bower_components\jquery\.bower.json" />
+    <Content Include="bower_components\jquery\bower.json" />
+    <Content Include="bower_components\jquery\dist\jquery.min.map" />
+    <Content Include="bower_components\jquery\dist\jquery.slim.min.map" />
+    <Content Include="bower_components\jquery\README.md" />
+    <Content Include="bower_components\jquery\src\.jshintrc" />
+    <Content Include="bower_components\ng-office-ui-fabric\.bower.json" />
+    <Content Include="bower_components\ng-office-ui-fabric\bower.json" />
+    <Content Include="bower_components\ng-office-ui-fabric\CHANGELOG.md" />
+    <Content Include="bower_components\ng-office-ui-fabric\LICENSE" />
+    <Content Include="bower_components\ng-office-ui-fabric\package.json" />
+    <Content Include="bower_components\ng-office-ui-fabric\README.md" />
+    <Content Include="bower_components\office-ui-fabric\.bower.json" />
+    <Content Include="bower_components\office-ui-fabric\.npmignore" />
+    <Content Include="bower_components\office-ui-fabric\bower.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Breadcrumb\Breadcrumb.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Breadcrumb\Breadcrumb.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Button\Button.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Button\Button.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Callout\Callout.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Callout\Callout.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ChoiceField\ChoiceField.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ChoiceField\ChoiceField.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\CommandBar\CommandBar.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\CommandBar\CommandBar.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ContextualMenu\ContextualMenu.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ContextualMenu\ContextualMenu.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\DatePicker\DatePicker.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\DatePicker\DatePicker.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dialog\Dialog.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dialog\Dialog.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dropdown\Dropdown.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Dropdown\Dropdown.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Facepile\Facepile.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Facepile\Facepile.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Label\Label.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Label\Label.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Link\Link.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Link\Link.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ListItem\ListItem.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ListItem\ListItem.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\List\List.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\List\List.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\MessageBanner\MessageBanner.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\MessageBanner\MessageBanner.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\NavBar\NavBar.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\NavBar\NavBar.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\OrgChart\OrgChart.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\OrgChart\OrgChart.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Overlay\Overlay.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Overlay\Overlay.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Panel\Panel.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Panel\Panel.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PeoplePicker\PeoplePicker.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PeoplePicker\PeoplePicker.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PersonaCard\PersonaCard.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\PersonaCard\PersonaCard.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Persona\Persona.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Pivot\Pivot.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Pivot\Pivot.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ProgressIndicator\ProgressIndicator.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\ProgressIndicator\ProgressIndicator.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\SearchBox\SearchBox.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\SearchBox\SearchBox.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Spinner\Spinner.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Spinner\Spinner.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Table\Table.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Table\Table.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\TextField\TextField.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\TextField\TextField.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Toggle\Toggle.json" />
+    <Content Include="bower_components\office-ui-fabric\dist\components\Toggle\Toggle.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\Form\sass\Form.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\sass\Base.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\sass\ChannelPage.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\sass\ChannelsPage.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\sass\HomePage.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\sass\NavBar.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\sass\PlayerPage.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\sass\SpotLight.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\sass\Utilities.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\sass\VideoListItem.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\samples\VideoPortal\sass\VideoPortal.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.Animations.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.Animations.RTL.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.Color.Mixins.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.Components.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.Grid.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.Icons.Font.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.Icons.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.Icons.RTL.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.Responsive.Utilities.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.RTL.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.Typography.Fonts.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.Typography.Language.Overrides.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.Typography.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\Fabric.Utilities.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Animations.RTL.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Animations.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Color.Mixins.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Color.Variables.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Common.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Grid.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Icons.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Mixins.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Responsive.Utilities.Variables.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Responsive.Variables.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Typography.Fonts.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Typography.Language.Overrides.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Typography.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Typography.Variables.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.Utilities.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Fabric.ZIndex.Variables.scss" />
+    <Content Include="bower_components\office-ui-fabric\dist\sass\_Office.Color.Variables.scss" />
+    <Content Include="bower_components\office-ui-fabric\LICENSE" />
+    <Content Include="bower_components\office-ui-fabric\package.json" />
+    <Content Include="bower_components\office-ui-fabric\README.md" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Breadcrumb\Breadcrumb.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Breadcrumb\Breadcrumb.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Button\Button.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Button\Button.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Callout\Callout.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Callout\Callout.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ChoiceField\ChoiceField.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ChoiceField\ChoiceField.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\CommandBar\CommandBar.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\CommandBar\CommandBar.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ContextualMenu\ContextualMenu.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ContextualMenu\ContextualMenu.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\DatePicker\DatePicker.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\DatePicker\DatePicker.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Dialog\Dialog.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Dialog\Dialog.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Dropdown\Dropdown.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Dropdown\Dropdown.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Facepile\Facepile.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Facepile\Facepile.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Label\Label.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Label\Label.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Link\Link.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Link\Link.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ListItem\ListItem.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ListItem\ListItem.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\List\List.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\List\List.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\MessageBanner\MessageBanner.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\MessageBanner\MessageBanner.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\NavBar\NavBar.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\NavBar\NavBar.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\OrgChart\OrgChart.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\OrgChart\OrgChart.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Overlay\Overlay.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Overlay\Overlay.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Panel\Panel.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Panel\Panel.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\PeoplePicker\PeoplePicker.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\PeoplePicker\PeoplePicker.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\PersonaCard\PersonaCard.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\PersonaCard\PersonaCard.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Persona\Persona.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Pivot\Pivot.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Pivot\Pivot.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ProgressIndicator\ProgressIndicator.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\ProgressIndicator\ProgressIndicator.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\SearchBox\SearchBox.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\SearchBox\SearchBox.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Spinner\Spinner.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Spinner\Spinner.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Table\Table.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Table\Table.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\TextField\TextField.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\TextField\TextField.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Toggle\Toggle.json" />
+    <Content Include="bower_components\office-ui-fabric\src\components\Toggle\Toggle.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\Form\sass\Form.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\VideoPortal\sass\Base.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\VideoPortal\sass\ChannelPage.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\VideoPortal\sass\ChannelsPage.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\VideoPortal\sass\HomePage.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\VideoPortal\sass\NavBar.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\VideoPortal\sass\PlayerPage.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\VideoPortal\sass\SpotLight.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\VideoPortal\sass\Utilities.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\VideoPortal\sass\VideoListItem.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\samples\VideoPortal\sass\VideoPortal.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.Animations.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.Animations.RTL.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.Color.Mixins.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.Components.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.Grid.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.Icons.Font.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.Icons.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.Icons.RTL.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.Responsive.Utilities.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.RTL.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.Typography.Fonts.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.Typography.Language.Overrides.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.Typography.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\Fabric.Utilities.Output.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Animations.RTL.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Animations.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Color.Mixins.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Color.Variables.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Common.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Grid.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Icons.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Mixins.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Responsive.Utilities.Variables.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Responsive.Variables.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Typography.Fonts.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Typography.Language.Overrides.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Typography.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Typography.Variables.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.Utilities.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Fabric.ZIndex.Variables.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\sass\_Office.Color.Variables.scss" />
+    <Content Include="bower_components\office-ui-fabric\src\templates\component-manifest-template.scss" />
+    <Content Include="bower_components\angular-loading-bar\.bower.json" />
+    <Content Include="bower_components\angular-loading-bar\bower.json" />
+    <Content Include="bower_components\angular-loading-bar\CHANGELOG.md" />
+    <Content Include="bower_components\angular-loading-bar\CONTRIBUTING.md" />
+    <Content Include="bower_components\angular-loading-bar\ISSUE_TEMPLATE.md" />
+    <Content Include="bower_components\angular-loading-bar\LICENSE" />
+    <Content Include="bower_components\angular-loading-bar\package.json" />
+    <Content Include="bower_components\angular-loading-bar\PULL_REQUEST_TEMPLATE.md" />
+    <Content Include="bower_components\angular-loading-bar\README.md" />
+    <None Include="Scripts\_references.js" />
+    <None Include="Scripts\Office\1\outlook-win32.debug-vsdoc.js" />
+    <None Include="Scripts\Office\1\office-vsdoc.js" />
+    <Content Include="Scripts\Office\1\access-web-16.00.debug.js" />
+    <Content Include="Scripts\Office\1\access-web-16.00.js" />
+    <Content Include="Scripts\Office\1\ar-sa\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\ar-sa\office_strings.js" />
+    <Content Include="Scripts\Office\1\ar-sa\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\ar-sa\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\bg-bg\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\bg-bg\office_strings.js" />
+    <Content Include="Scripts\Office\1\bg-bg\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\bg-bg\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\cs-cz\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\cs-cz\office_strings.js" />
+    <Content Include="Scripts\Office\1\cs-cz\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\cs-cz\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\da-dk\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\da-dk\office_strings.js" />
+    <Content Include="Scripts\Office\1\da-dk\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\da-dk\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\de-de\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\de-de\office_strings.js" />
+    <Content Include="Scripts\Office\1\de-de\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\de-de\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\el-gr\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\el-gr\office_strings.js" />
+    <Content Include="Scripts\Office\1\el-gr\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\el-gr\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\en-us\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\en-us\office_strings.js" />
+    <Content Include="Scripts\Office\1\en-us\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\en-us\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\es-es\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\es-es\office_strings.js" />
+    <Content Include="Scripts\Office\1\es-es\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\es-es\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\et-ee\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\et-ee\office_strings.js" />
+    <Content Include="Scripts\Office\1\et-ee\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\et-ee\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\excel-15.01.debug.js" />
+    <Content Include="Scripts\Office\1\excel-15.01.js" />
+    <Content Include="Scripts\Office\1\excel-15.debug.js" />
+    <Content Include="Scripts\Office\1\excel-15.js" />
+    <Content Include="Scripts\Office\1\excel-ios-16.00.debug.js" />
+    <Content Include="Scripts\Office\1\excel-ios-16.00.js" />
+    <Content Include="Scripts\Office\1\excel-web-16.00.debug.js" />
+    <Content Include="Scripts\Office\1\excel-web-16.00.js" />
+    <Content Include="Scripts\Office\1\excel-win32-16.00.debug.js" />
+    <Content Include="Scripts\Office\1\excel-win32-16.00.js" />
+    <Content Include="Scripts\Office\1\excelios-15.debug.js" />
+    <Content Include="Scripts\Office\1\excelios-15.js" />
+    <Content Include="Scripts\Office\1\excelwebapp-15.01.debug.js" />
+    <Content Include="Scripts\Office\1\excelwebapp-15.01.js" />
+    <Content Include="Scripts\Office\1\excelwebapp-15.debug.js" />
+    <Content Include="Scripts\Office\1\excelwebapp-15.js" />
+    <Content Include="Scripts\Office\1\fi-fi\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\fi-fi\office_strings.js" />
+    <Content Include="Scripts\Office\1\fi-fi\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\fi-fi\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\fr-fr\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\fr-fr\office_strings.js" />
+    <Content Include="Scripts\Office\1\fr-fr\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\fr-fr\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\he-il\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\he-il\office_strings.js" />
+    <Content Include="Scripts\Office\1\he-il\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\he-il\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\hi-in\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\hi-in\office_strings.js" />
+    <Content Include="Scripts\Office\1\hi-in\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\hi-in\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\hr-hr\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\hr-hr\office_strings.js" />
+    <Content Include="Scripts\Office\1\hr-hr\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\hr-hr\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\hu-hu\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\hu-hu\office_strings.js" />
+    <Content Include="Scripts\Office\1\hu-hu\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\hu-hu\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\id-id\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\id-id\office_strings.js" />
+    <Content Include="Scripts\Office\1\id-id\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\id-id\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\it-it\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\it-it\office_strings.js" />
+    <Content Include="Scripts\Office\1\it-it\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\it-it\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\ja-jp\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\ja-jp\office_strings.js" />
+    <Content Include="Scripts\Office\1\ja-jp\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\ja-jp\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\kk-kz\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\kk-kz\office_strings.js" />
+    <Content Include="Scripts\Office\1\kk-kz\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\kk-kz\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\ko-kr\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\ko-kr\office_strings.js" />
+    <Content Include="Scripts\Office\1\ko-kr\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\ko-kr\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\lt-lt\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\lt-lt\office_strings.js" />
+    <Content Include="Scripts\Office\1\lt-lt\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\lt-lt\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\lv-lv\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\lv-lv\office_strings.js" />
+    <Content Include="Scripts\Office\1\lv-lv\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\lv-lv\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\ms-my\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\ms-my\office_strings.js" />
+    <Content Include="Scripts\Office\1\ms-my\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\ms-my\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\nb-no\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\nb-no\office_strings.js" />
+    <Content Include="Scripts\Office\1\nb-no\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\nb-no\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\nl-nl\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\nl-nl\office_strings.js" />
+    <Content Include="Scripts\Office\1\nl-nl\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\nl-nl\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\o15apptofilemappingtable.debug.js" />
+    <Content Include="Scripts\Office\1\o15apptofilemappingtable.js" />
+    <Content Include="Scripts\Office\1\office.debug.js" />
+    <Content Include="Scripts\Office\1\office.js" />
+    <Content Include="Scripts\Office\1\outlook-15.01.debug.js" />
+    <Content Include="Scripts\Office\1\outlook-15.01.js" />
+    <Content Include="Scripts\Office\1\outlook-15.02.debug.js" />
+    <Content Include="Scripts\Office\1\outlook-15.02.js" />
+    <Content Include="Scripts\Office\1\outlook-15.debug.js" />
+    <Content Include="Scripts\Office\1\outlook-15.js" />
+    <Content Include="Scripts\Office\1\outlook-web-16.00.debug.js" />
+    <Content Include="Scripts\Office\1\outlook-web-16.00.js" />
+    <Content Include="Scripts\Office\1\outlook-win32-16.00.debug.js" />
+    <Content Include="Scripts\Office\1\outlook-win32-16.00.js" />
+    <Content Include="Scripts\Office\1\outlookwebapp-15.01.debug.js" />
+    <Content Include="Scripts\Office\1\outlookwebapp-15.01.js" />
+    <Content Include="Scripts\Office\1\outlookwebapp-15.debug.js" />
+    <Content Include="Scripts\Office\1\outlookwebapp-15.js" />
+    <Content Include="Scripts\Office\1\pl-pl\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\pl-pl\office_strings.js" />
+    <Content Include="Scripts\Office\1\pl-pl\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\pl-pl\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\powerpoint-15.01.debug.js" />
+    <Content Include="Scripts\Office\1\powerpoint-15.01.js" />
+    <Content Include="Scripts\Office\1\powerpoint-15.debug.js" />
+    <Content Include="Scripts\Office\1\powerpoint-15.js" />
+    <Content Include="Scripts\Office\1\powerpoint-ios-16.00.debug.js" />
+    <Content Include="Scripts\Office\1\powerpoint-ios-16.00.js" />
+    <Content Include="Scripts\Office\1\powerpoint-web-16.00.debug.js" />
+    <Content Include="Scripts\Office\1\powerpoint-web-16.00.js" />
+    <Content Include="Scripts\Office\1\powerpoint-win32-16.00.debug.js" />
+    <Content Include="Scripts\Office\1\powerpoint-win32-16.00.js" />
+    <Content Include="Scripts\Office\1\powerpointios-15.debug.js" />
+    <Content Include="Scripts\Office\1\powerpointios-15.js" />
+    <Content Include="Scripts\Office\1\project-15.01.debug.js" />
+    <Content Include="Scripts\Office\1\project-15.01.js" />
+    <Content Include="Scripts\Office\1\project-15.debug.js" />
+    <Content Include="Scripts\Office\1\project-15.js" />
+    <Content Include="Scripts\Office\1\project-win32-16.00.debug.js" />
+    <Content Include="Scripts\Office\1\project-win32-16.00.js" />
+    <Content Include="Scripts\Office\1\pt-br\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\pt-br\office_strings.js" />
+    <Content Include="Scripts\Office\1\pt-br\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\pt-br\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\pt-pt\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\pt-pt\office_strings.js" />
+    <Content Include="Scripts\Office\1\pt-pt\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\pt-pt\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\ro-ro\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\ro-ro\office_strings.js" />
+    <Content Include="Scripts\Office\1\ro-ro\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\ro-ro\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\ru-ru\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\ru-ru\office_strings.js" />
+    <Content Include="Scripts\Office\1\ru-ru\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\ru-ru\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\sk-sk\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\sk-sk\office_strings.js" />
+    <Content Include="Scripts\Office\1\sk-sk\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\sk-sk\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\sl-si\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\sl-si\office_strings.js" />
+    <Content Include="Scripts\Office\1\sl-si\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\sl-si\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\sr-latn-cs\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\sr-latn-cs\office_strings.js" />
+    <Content Include="Scripts\Office\1\sr-latn-cs\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\sr-latn-cs\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\sv-se\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\sv-se\office_strings.js" />
+    <Content Include="Scripts\Office\1\sv-se\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\sv-se\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\th-th\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\th-th\office_strings.js" />
+    <Content Include="Scripts\Office\1\th-th\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\th-th\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\tr-tr\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\tr-tr\office_strings.js" />
+    <Content Include="Scripts\Office\1\tr-tr\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\tr-tr\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\uk-ua\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\uk-ua\office_strings.js" />
+    <Content Include="Scripts\Office\1\uk-ua\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\uk-ua\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\vi-vn\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\vi-vn\office_strings.js" />
+    <Content Include="Scripts\Office\1\vi-vn\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\vi-vn\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\word-15.01.debug.js" />
+    <Content Include="Scripts\Office\1\word-15.01.js" />
+    <Content Include="Scripts\Office\1\word-15.debug.js" />
+    <Content Include="Scripts\Office\1\word-15.js" />
+    <Content Include="Scripts\Office\1\word-ios-16.00.debug.js" />
+    <Content Include="Scripts\Office\1\word-ios-16.00.js" />
+    <Content Include="Scripts\Office\1\word-web-16.00.debug.js" />
+    <Content Include="Scripts\Office\1\word-web-16.00.js" />
+    <Content Include="Scripts\Office\1\word-win32-16.00.debug.js" />
+    <Content Include="Scripts\Office\1\word-win32-16.00.js" />
+    <Content Include="Scripts\Office\1\wordios-15.debug.js" />
+    <Content Include="Scripts\Office\1\wordios-15.js" />
+    <Content Include="Scripts\Office\1\zh-cn\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\zh-cn\office_strings.js" />
+    <Content Include="Scripts\Office\1\zh-cn\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\zh-cn\outlook_strings.js" />
+    <Content Include="Scripts\Office\1\zh-tw\office_strings.debug.js" />
+    <Content Include="Scripts\Office\1\zh-tw\office_strings.js" />
+    <Content Include="Scripts\Office\1\zh-tw\outlook_strings.debug.js" />
+    <Content Include="Scripts\Office\1\zh-tw\outlook_strings.js" />
+    <Content Include="Scripts\Office\metadata\endpoints.xml" />
+    <Content Include="Scripts\Office\metadata\features.xml" />
+    <Content Include="Scripts\_officeintellisense.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\API\DiscoveryController.cs" />
+    <Compile Include="Controllers\MVC\HomeController.cs" />
+    <Compile Include="Model\AccessToken.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>58788</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44300</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
