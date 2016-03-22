@@ -59,6 +59,30 @@
 		return deferred.promise;
 	}
 
+	o365Service.prototype.search = function (terms) {
+		var deferred = this.$q.defer();
+		var that = this;
+		this.getDiscoveryData()
+			.then(function (result) {
+				that.adal.config.endpoints[result.spResourceUrl] = result.spResourceId;
+
+				return that.$http.get(result.spResourceUrl + '/search/query?querytext=\'' + terms +
+					'\'&sourceid=\'B09A7990-05EA-4AF9-81EF-EDFAB16C4E31\'&selectproperties=\'Path,PreferredName\'', {
+					headers: { 'accept': 'application/json;odata=verbose' }
+				});
+			}, function (err) {
+				deferred.reject(err);
+			})
+		.then(function (response) {
+			deferred.resolve(response.data.d);
+		},
+		function (err) {
+			deferred.reject(err);
+		});
+
+		return deferred.promise;
+	}
+
 	o365Service.prototype.getMyProperties = function () {
 		var deferred = this.$q.defer();
 		var that = this;

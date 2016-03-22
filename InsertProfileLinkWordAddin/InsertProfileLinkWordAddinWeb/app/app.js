@@ -4,7 +4,6 @@
 	angular.module('profile.link.app', ['ngRoute', 'AdalAngular', 'officeuifabric.core', 'officeuifabric.components', 'angular-loading-bar'])
 	.config(config);
 
-
 	config.$inject = [
 		'$routeProvider',
 		'$httpProvider',
