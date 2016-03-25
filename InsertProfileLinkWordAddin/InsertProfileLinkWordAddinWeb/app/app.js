@@ -4,6 +4,8 @@
 	angular.module('profile.link.app', ['ngRoute', 'AdalAngular', 'officeuifabric.core', 'officeuifabric.components', 'angular-loading-bar'])
 	.config(config);
 
+	Office.initialize = function(reason) {};
+
 	config.$inject = [
 		'$routeProvider',
 		'$httpProvider',
@@ -24,7 +26,7 @@
 		adalProvider.init(
 			{
 				instance: 'https://login.microsoftonline.com/',
-				clientId: '58f46aab-fc72-42f7-8d76-7eb7dadc61f0',
+				clientId: 'ed172174-d2bb-468e-bec1-bbd0ef9eced2',
 				extraQueryParameter: 'nux=1',
 				endpoints: {
 					'https://api.office.com/discovery/v1.0/me/': 'https://api.office.com/discovery/',
