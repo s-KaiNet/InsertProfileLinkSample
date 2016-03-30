@@ -171,8 +171,8 @@
     <Content Include="app\mainCtrl.js" />
     <Content Include="app\o365.service.js" />
     <Content Include="bower_components\adal-angular\changelog.txt" />
-    <Content Include="bower_components\adal-angular\dist\adal-angular.min.js" />
-    <Content Include="bower_components\adal-angular\dist\adal.min.js" />
+    <Content Include="components\adal-angular.min.js" />
+    <Content Include="components\adal.min.js" />
     <Content Include="bower_components\adal-angular\Gruntfile.js" />
     <Content Include="bower_components\adal-angular\karma.conf.js" />
     <Content Include="bower_components\adal-angular\lib\adal-angular.js" />
@@ -180,18 +180,18 @@
     <Content Include="bower_components\adal-angular\LICENSE.txt" />
     <Content Include="bower_components\angular-loading-bar\build\loading-bar.css" />
     <Content Include="bower_components\angular-loading-bar\build\loading-bar.js" />
-    <Content Include="bower_components\angular-loading-bar\build\loading-bar.min.css" />
-    <Content Include="bower_components\angular-loading-bar\build\loading-bar.min.js" />
+    <Content Include="components\loading-bar.min.css" />
+    <Content Include="components\loading-bar.min.js" />
     <Content Include="bower_components\angular-loading-bar\Gruntfile.js" />
     <Content Include="bower_components\angular-loading-bar\index.js" />
     <Content Include="bower_components\angular-loading-bar\src\loading-bar.css" />
     <Content Include="bower_components\angular-loading-bar\src\loading-bar.js" />
     <Content Include="bower_components\angular-route\angular-route.js" />
-    <Content Include="bower_components\angular-route\angular-route.min.js" />
+    <Content Include="components\angular-route.min.js" />
     <Content Include="bower_components\angular-route\index.js" />
     <Content Include="bower_components\angular\angular-csp.css" />
     <Content Include="bower_components\angular\angular.js" />
-    <Content Include="bower_components\angular\angular.min.js" />
+    <Content Include="components\angular.min.js" />
     <Content Include="bower_components\angular\index.js" />
     <Content Include="bower_components\jquery\AUTHORS.txt" />
     <Content Include="bower_components\jquery\dist\jquery.js" />
@@ -308,7 +308,7 @@
     <Content Include="bower_components\jquery\src\wrap.js" />
     <Content Include="bower_components\ng-office-ui-fabric\.gitignore" />
     <Content Include="bower_components\ng-office-ui-fabric\ngOfficeUiFabric.js" />
-    <Content Include="bower_components\ng-office-ui-fabric\ngOfficeUiFabric.min.js" />
+    <Content Include="components\ngOfficeUiFabric.min.js" />
     <Content Include="bower_components\office-ui-fabric\.gitignore" />
     <Content Include="bower_components\office-ui-fabric\dist\components\Breadcrumb\Breadcrumb.css" />
     <Content Include="bower_components\office-ui-fabric\dist\components\Breadcrumb\Breadcrumb.html" />
@@ -478,11 +478,11 @@
     <Content Include="bower_components\office-ui-fabric\dist\components\Toggle\Toggle.min.css" />
     <Content Include="bower_components\office-ui-fabric\dist\components\Toggle\Toggle.TextLeft.html" />
     <Content Include="bower_components\office-ui-fabric\dist\css\fabric.components.css" />
-    <Content Include="bower_components\office-ui-fabric\dist\css\fabric.components.min.css" />
+    <Content Include="components\fabric.components.min.css" />
     <Content Include="bower_components\office-ui-fabric\dist\css\fabric.components.rtl.css" />
     <Content Include="bower_components\office-ui-fabric\dist\css\fabric.components.rtl.min.css" />
     <Content Include="bower_components\office-ui-fabric\dist\css\fabric.css" />
-    <Content Include="bower_components\office-ui-fabric\dist\css\fabric.min.css" />
+    <Content Include="components\fabric.min.css" />
     <Content Include="bower_components\office-ui-fabric\dist\css\fabric.rtl.css" />
     <Content Include="bower_components\office-ui-fabric\dist\css\fabric.rtl.min.css" />
     <Content Include="bower_components\office-ui-fabric\dist\js\jquery.fabric.js" />
@@ -1250,7 +1250,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="bower_components\adal-angular\dist\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

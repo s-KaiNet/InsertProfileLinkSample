@@ -20,7 +20,7 @@
 			var raw = String.fromCharCode.apply(null, data);
 			var base64 = btoa(raw);
 
-			deferred.resolve('data:image//jpeg;base64,' + base64);
+			deferred.resolve('data:image/jpeg;base64,' + base64);
 		},
 		function (err) {
 			if (err.status === 404) {

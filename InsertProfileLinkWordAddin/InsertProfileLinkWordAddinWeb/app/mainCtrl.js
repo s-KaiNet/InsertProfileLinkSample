@@ -62,10 +62,17 @@
 
 	mainCtrl.prototype.onInit = function () {
 		var that = this;
+
 		this.o365.getMyProperties()
 		.then(function (data) {
 			that.$scope.username = data.DisplayName;
-			that.$scope.profileImageUrl = data.PictureUrl;
+		}, function (err) {
+			that.$scope.log += JSON.stringify(err);
+		});
+
+		this.o365.getProfileImageUrl()
+		.then(function (data) {
+			that.$scope.profileImageUrl = data;
 		}, function (err) {
 			that.$scope.log += JSON.stringify(err);
 		});

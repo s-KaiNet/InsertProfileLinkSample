@@ -1,14 +1,22 @@
-﻿.welcome {
-	width: 180px;
-	margin: 5px auto 5px auto;
-}
-
-.avatar {
+﻿.avatar img {
+	display: inline-block;
+	border-radius: 50%;
 	width: 80px;
-	margin: 5px auto 5px auto;
 }
 
-	.avatar img {
+.center {
+	text-align: center;
+}
+
+	.center .welcome, .center .avatar {
 		display: inline-block;
-		border-radius: 50%;
 	}
+
+.search {
+	width: 300px;
+	margin: 0 auto;
+}
+
+.welcome {
+	margin: 15px 0 15px;
+}
